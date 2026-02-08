@@ -140,6 +140,10 @@ h1 {
   margin-bottom: 22px;
 }
 
+.admin-stats {
+  margin-bottom: 0;
+}
+
 .stats article {
   padding: 18px;
   border-radius: var(--radius-md);
@@ -230,6 +234,14 @@ input:focus {
   margin-top: 2px;
   font-size: 14px;
   color: #1b4d2c;
+}
+
+.recent-list {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  color: var(--text-muted);
 }
 
 .footer {

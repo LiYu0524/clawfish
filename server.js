@@ -5,6 +5,7 @@ const crypto = require("crypto");
 
 const HOST = "0.0.0.0";
 const PORT = Number(process.env.PORT || 8080);
+const ADMIN_KEY = process.env.ADMIN_KEY || "clawfish-admin";
 const DATA_DIR = path.join(__dirname, "data");
 const DATA_FILE = path.join(DATA_DIR, "agents.json");
 const PUBLIC_DIR = __dirname;
@@ -112,6 +113,10 @@ function createVerificationCode() {
   return String(value);
 }
 
+function createInviteAccessToken() {
+  return crypto.randomBytes(20).toString("hex");
+}
+
 function hashPassword(password) {
   return crypto.createHash("sha256").update(password).digest("hex");
 }
@@ -121,9 +126,42 @@ function getBaseUrl(req) {
   return `${protocol}://${req.headers.host}`;
 }
 
-function handleStats(req, res) {
+function maskContact(contact) {
+  if (contact.includes("@")) {
+    const [name, domain] = contact.split("@");
+    const shownName = `${name.slice(0, 2)}***`;
+    return `${shownName}@${domain}`;
+  }
+
+  if (contact.length >= 7) {
+    return `${contact.slice(0, 3)}****${contact.slice(-2)}`;
+  }
+
+  return `${contact.slice(0, 2)}***`;
+}
+
+function handleAdminStats(req, res) {
+  const adminKey = String(req.headers["x-admin-key"] || "");
+  if (!adminKey || adminKey !== ADMIN_KEY) {
+    sendJson(res, 401, { message: "后台密钥无效。" });
+    return;
+  }
+
   const data = loadData();
-  sendJson(res, 200, { registeredAgents: data.agents.length });
+  const verificationIssuedAgents = data.agents.filter((item) => item.verificationCode).length;
+  const recentAgents = data.agents
+    .slice(-10)
+    .reverse()
+    .map((item) => ({
+      contactMasked: maskContact(item.contact),
+      registeredAt: item.registeredAt
+    }));
+
+  sendJson(res, 200, {
+    registeredAgents: data.agents.length,
+    verificationIssuedAgents,
+    recentAgents
+  });
 }
 
 async function handleRegister(req, res) {
@@ -155,11 +193,14 @@ async function handleRegister(req, res) {
   }
 
   const inviteCode = createInviteCode(8);
+  const inviteAccessToken = createInviteAccessToken();
   const agent = {
     agentId: crypto.randomUUID(),
     contact,
     passwordHash: hashPassword(password),
     inviteCode,
+    inviteAccessToken,
+    inviteTokenIssuedAt: new Date().toISOString(),
     verificationCode: "",
     verificationIssuedAt: "",
     registeredAt: new Date().toISOString()
@@ -169,6 +210,25 @@ async function handleRegister(req, res) {
 
   sendJson(res, 201, {
     message: "注册成功。",
+    nextPath: `/invite-center?token=${agent.inviteAccessToken}`
+  });
+}
+
+function handleInviteSession(req, res, requestUrl) {
+  const token = String(requestUrl.searchParams.get("token") || "").trim();
+  if (!token) {
+    sendJson(res, 400, { message: "缺少邀请码访问凭证。" });
+    return;
+  }
+
+  const data = loadData();
+  const agent = data.agents.find((item) => item.inviteAccessToken === token);
+  if (!agent) {
+    sendJson(res, 404, { message: "邀请码访问凭证无效，请重新注册。" });
+    return;
+  }
+
+  sendJson(res, 200, {
     agentId: agent.agentId,
     inviteCode: agent.inviteCode,
     inviteLink: `${getBaseUrl(req)}/invite/${agent.inviteCode}`
@@ -213,6 +273,16 @@ function handleStatic(req, res, pathname) {
     return;
   }
 
+  if (pathname === "/invite-center") {
+    sendFile(res, path.join(PUBLIC_DIR, "invite.html"));
+    return;
+  }
+
+  if (pathname === "/admin") {
+    sendFile(res, path.join(PUBLIC_DIR, "admin.html"));
+    return;
+  }
+
   if (pathname.startsWith("/assets/")) {
     const relativePath = pathname.replace(/^\/+/, "");
     const normalizedPath = path.normalize(relativePath);
@@ -233,8 +303,13 @@ const server = http.createServer(async (req, res) => {
   const requestUrl = new URL(req.url, `http://${req.headers.host}`);
   const pathname = requestUrl.pathname;
 
-  if (req.method === "GET" && pathname === "/api/stats") {
-    handleStats(req, res);
+  if (req.method === "GET" && pathname === "/api/admin/stats") {
+    handleAdminStats(req, res);
+    return;
+  }
+
+  if (req.method === "GET" && pathname === "/api/invite-session") {
+    handleInviteSession(req, res, requestUrl);
     return;
   }
 

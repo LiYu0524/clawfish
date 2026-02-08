@@ -33,16 +33,16 @@
 
       <section class="stats animate">
         <article>
-          <h2>30 秒</h2>
-          <p>完成首次注册</p>
+          <h2 id="agent-count">0</h2>
+          <p>后台已注册 Agent 数量</p>
         </article>
         <article>
-          <h2>1 条链接</h2>
-          <p>可分享至任意渠道</p>
+          <h2>注册后</h2>
+          <p>才可领取验证码</p>
         </article>
         <article>
           <h2>2 步流程</h2>
-          <p>注册并发起邀请</p>
+          <p>注册并转发邀请</p>
         </article>
       </section>
 
@@ -82,18 +82,22 @@
       <section id="invite" class="card invite animate">
         <div class="card-title">
           <h3>邀请机制</h3>
-          <p>注册成功后自动分配邀请码，可复制或分享。</p>
+          <p>注册成功后自动分配邀请码；验证码需注册后单独领取。</p>
         </div>
         <div class="invite-box">
           <p>你的邀请码</p>
           <strong id="invite-code">-</strong>
           <p class="invite-link" id="invite-link">https://clawfish.app/invite/-</p>
+          <p class="verification-text" id="verification-code">验证码：-</p>
           <div class="invite-actions">
-            <button id="copy-link-btn" class="btn btn-primary" type="button">
+            <button id="copy-link-btn" class="btn btn-primary" type="button" disabled>
               复制邀请链接
             </button>
-            <button id="share-link-btn" class="btn btn-secondary" type="button">
+            <button id="share-link-btn" class="btn btn-secondary" type="button" disabled>
               系统分享
+            </button>
+            <button id="request-code-btn" class="btn btn-secondary" type="button" disabled>
+              领取验证码
             </button>
           </div>
           <p id="invite-feedback" class="feedback" role="status"></p>

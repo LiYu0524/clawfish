@@ -110,6 +110,13 @@ h1 {
   transform: translateY(-2px);
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+  box-shadow: none;
+}
+
 .btn-primary {
   color: #fff;
   background: var(--accent);
@@ -205,6 +212,10 @@ input:focus {
 .invite-link {
   overflow-wrap: anywhere;
   color: var(--text-muted);
+}
+
+.verification-text {
+  font-weight: 700;
 }
 
 .invite-actions {

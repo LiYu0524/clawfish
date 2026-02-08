@@ -1,0 +1,9 @@
+{
+  "name": "clawfish",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Simple conversion landing page with backend registration stats and verification code APIs.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

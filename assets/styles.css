@@ -1,0 +1,277 @@
+:root {
+  --bg-top: #f6f0e9;
+  --bg-bottom: #f5f8fa;
+  --text-main: #1b2430;
+  --text-muted: #5b6572;
+  --accent: #f25c27;
+  --accent-strong: #d84b19;
+  --accent-soft: #ffd8c9;
+  --surface: #ffffffcc;
+  --surface-border: #1b24301a;
+  --shadow: 0 22px 50px #1b24301f;
+  --radius-lg: 24px;
+  --radius-md: 14px;
+  --max-width: 1000px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text-main);
+  font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+  background: linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.mesh-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 12% 18%, #ffe4cf 0, #ffe4cf00 38%),
+    radial-gradient(circle at 88% 12%, #d7f2ff 0, #d7f2ff00 33%),
+    radial-gradient(circle at 70% 85%, #fff2c8 0, #fff2c800 30%);
+}
+
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 72px 20px 48px;
+}
+
+.hero {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 34px;
+}
+
+.eyebrow {
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--accent-strong);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--accent-soft);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  max-width: 700px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  border: 0;
+  border-radius: var(--radius-md);
+  padding: 13px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  color: #fff;
+  background: var(--accent);
+  box-shadow: 0 10px 26px #f25c2740;
+}
+
+.btn-primary:hover {
+  background: var(--accent-strong);
+}
+
+.btn-secondary {
+  color: var(--text-main);
+  background: #fff;
+  border: 1px solid var(--surface-border);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.stats article {
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-border);
+  background: var(--surface);
+  backdrop-filter: blur(8px);
+}
+
+.stats h2 {
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+.stats p {
+  margin-top: 6px;
+  color: var(--text-muted);
+}
+
+.card {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--surface-border);
+  background: var(--surface);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+.card-title p {
+  margin-top: 8px;
+  color: var(--text-muted);
+}
+
+.register-form {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #c8d3dd;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: 2px solid #f25c274a;
+  border-color: var(--accent);
+}
+
+.invite-box {
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.invite-box strong {
+  font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+  font-size: 2rem;
+}
+
+.invite-link {
+  overflow-wrap: anywhere;
+  color: var(--text-muted);
+}
+
+.invite-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.feedback {
+  min-height: 1.5em;
+  margin-top: 2px;
+  font-size: 14px;
+  color: #1b4d2c;
+}
+
+.footer {
+  max-width: var(--max-width);
+  margin: 0 auto 28px;
+  padding: 0 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.animate {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: enter 0.7s ease forwards;
+}
+
+.hero {
+  animation-delay: 0.05s;
+}
+
+.stats {
+  animation-delay: 0.1s;
+}
+
+#register {
+  animation-delay: 0.16s;
+}
+
+#invite {
+  animation-delay: 0.22s;
+}
+
+.footer {
+  animation-delay: 0.3s;
+}
+
+@keyframes enter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 800px) {
+  .page {
+    padding-top: 52px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}

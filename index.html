@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Clawfish 是一个轻量平台，用更短路径完成注册与邀请裂变。"
+    />
+    <title>Clawfish | 注册即得邀请权益</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <div class="mesh-bg" aria-hidden="true"></div>
+    <main class="page">
+      <header class="hero animate">
+        <p class="eyebrow">Simple Platform · Fast Growth</p>
+        <h1>一页完成注册与邀请，快速拉新不分散</h1>
+        <p class="hero-subtitle">
+          Clawfish 提供极简上手体验：用户先完成注册，再一键复制专属邀请链接，持续带来新增用户。
+        </p>
+        <div class="hero-actions">
+          <a href="#register" class="btn btn-primary">立即注册</a>
+          <a href="#invite" class="btn btn-secondary">查看邀请机制</a>
+        </div>
+      </header>
+
+      <section class="stats animate">
+        <article>
+          <h2>30 秒</h2>
+          <p>完成首次注册</p>
+        </article>
+        <article>
+          <h2>1 条链接</h2>
+          <p>可分享至任意渠道</p>
+        </article>
+        <article>
+          <h2>2 步流程</h2>
+          <p>注册并发起邀请</p>
+        </article>
+      </section>
+
+      <section id="register" class="card animate">
+        <div class="card-title">
+          <h3>创建你的账号</h3>
+          <p>先拿到账户，再生成专属邀请链接。</p>
+        </div>
+        <form id="register-form" class="register-form">
+          <label>
+            手机号或邮箱
+            <input
+              id="contact"
+              name="contact"
+              type="text"
+              placeholder="例如：name@example.com"
+              autocomplete="email"
+              required
+            />
+          </label>
+          <label>
+            密码
+            <input
+              id="password"
+              name="password"
+              type="password"
+              minlength="6"
+              placeholder="至少 6 位"
+              required
+            />
+          </label>
+          <button type="submit" class="btn btn-primary">完成注册</button>
+          <p id="register-feedback" class="feedback" role="status"></p>
+        </form>
+      </section>
+
+      <section id="invite" class="card invite animate">
+        <div class="card-title">
+          <h3>邀请机制</h3>
+          <p>注册成功后自动分配邀请码，可复制或分享。</p>
+        </div>
+        <div class="invite-box">
+          <p>你的邀请码</p>
+          <strong id="invite-code">-</strong>
+          <p class="invite-link" id="invite-link">https://clawfish.app/invite/-</p>
+          <div class="invite-actions">
+            <button id="copy-link-btn" class="btn btn-primary" type="button">
+              复制邀请链接
+            </button>
+            <button id="share-link-btn" class="btn btn-secondary" type="button">
+              系统分享
+            </button>
+          </div>
+          <p id="invite-feedback" class="feedback" role="status"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer animate">
+      <p>© 2026 Clawfish. Built for conversion-focused onboarding.</p>
+    </footer>
+    <script src="./assets/main.js"></script>
+  </body>
+</html>

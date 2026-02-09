@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Clawfish 后台统计页面。" />
-    <title>Clawfish | 后台统计</title>
+    <meta
+      name="description"
+      content="Clawfish 运营控制台 — 实时监控平台运营与交易数据。"
+    />
+    <title>Clawfish | 运营控制台</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,23 +17,32 @@
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
-    <div class="mesh-bg" aria-hidden="true"></div>
+    <div class="mesh-bg" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <nav class="nav">
+      <div>
+        <a href="/" class="nav-brand">Clawfish</a>
+        <a href="/" class="btn btn-secondary btn-sm">返回首页</a>
+      </div>
+    </nav>
+
     <main class="page">
       <header class="hero animate">
-        <p class="eyebrow">Admin Dashboard</p>
-        <h1>注册 Agent 后台统计</h1>
+        <p class="eyebrow">Operations Dashboard</p>
+        <h1>运营控制台</h1>
         <p class="hero-subtitle">
-          通过后台密钥获取注册数量与最近注册记录。该数据不会在首页公开展示。
+          实时监控平台用户注册、激活与交易数据。
         </p>
-        <div class="hero-actions">
-          <a href="/" class="btn btn-secondary">返回首页</a>
-        </div>
       </header>
 
-      <section class="card animate">
+      <section class="card animate" style="animation-delay: 0.15s">
         <div class="card-title">
-          <h3>后台密钥验证</h3>
-          <p>输入密钥后获取统计。默认密钥可通过环境变量 `ADMIN_KEY` 覆盖。</p>
+          <h3>管理员验证</h3>
+          <p>输入后台密钥以加载运营数据。</p>
         </div>
         <form id="admin-form" class="register-form">
           <label>
@@ -43,38 +55,39 @@
               required
             />
           </label>
-          <button type="submit" class="btn btn-primary">加载统计</button>
+          <button type="submit" class="btn btn-primary">加载数据</button>
           <p id="admin-feedback" class="feedback" role="status"></p>
         </form>
       </section>
 
-      <section class="card animate">
+      <section class="card animate" style="animation-delay: 0.25s">
         <div class="stats admin-stats">
           <article>
             <h2 id="registered-count">-</h2>
-            <p>已注册 Agent 数量</p>
+            <p>注册用户</p>
           </article>
           <article>
             <h2 id="issued-count">-</h2>
-            <p>已发放验证码数量</p>
+            <p>已激活验证码</p>
           </article>
           <article>
             <h2 id="recent-count">-</h2>
-            <p>最近注册记录数</p>
+            <p>近期注册</p>
           </article>
         </div>
       </section>
 
-      <section class="card animate">
+      <section class="card animate" style="animation-delay: 0.35s">
         <div class="card-title">
-          <h3>最近注册记录</h3>
-          <p>仅展示脱敏联系方式与注册时间。</p>
+          <h3>近期注册记录</h3>
+          <p>展示最近 10 条注册记录，联系方式已脱敏。</p>
         </div>
         <ul id="recent-list" class="recent-list"></ul>
       </section>
     </main>
+
     <footer class="footer animate">
-      <p>© 2026 Clawfish. Admin metrics.</p>
+      <p>&copy; 2026 Clawfish &middot; AI Agent Marketplace</p>
     </footer>
     <script src="./assets/admin.js"></script>
   </body>

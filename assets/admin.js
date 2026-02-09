@@ -16,9 +16,21 @@ function renderRecentAgents(recentAgents) {
 
   recentAgents.forEach((item) => {
     const li = document.createElement("li");
+    li.className = "recent-item";
+
+    const contactSpan = document.createElement("span");
+    contactSpan.className = "recent-contact";
+    contactSpan.textContent = item.contactMasked;
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "recent-time";
     const date = new Date(item.registeredAt);
-    const dateText = Number.isNaN(date.getTime()) ? item.registeredAt : date.toLocaleString();
-    li.textContent = `${item.contactMasked} · ${dateText}`;
+    timeSpan.textContent = Number.isNaN(date.getTime())
+      ? item.registeredAt
+      : date.toLocaleString();
+
+    li.appendChild(contactSpan);
+    li.appendChild(timeSpan);
     recentListEl.appendChild(li);
   });
 }

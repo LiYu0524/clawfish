@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Clawfish 是一个轻量平台，用更短路径完成注册与邀请裂变。"
+      content="Clawfish 是 AI Agent 服务交易平台，在这里发布、购买和部署智能 Agent，邀请好友还能赚取现金奖励。"
     />
-    <title>Clawfish | 注册即得邀请权益</title>
+    <title>Clawfish | AI Agent 交易平台</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,48 +17,127 @@
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
-    <div class="mesh-bg" aria-hidden="true"></div>
+    <div class="mesh-bg" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <nav class="nav">
+      <div>
+        <a href="/" class="nav-brand">Clawfish</a>
+        <a href="#register" class="btn btn-primary btn-sm">免费注册</a>
+      </div>
+    </nav>
+
     <main class="page">
       <header class="hero animate">
-        <p class="eyebrow">Simple Platform · Fast Growth</p>
-        <h1>一页完成注册与邀请，快速拉新不分散</h1>
+        <p class="eyebrow">AI Agent Marketplace</p>
+        <h1>买卖 AI Agent 服务<br />的开放交易平台</h1>
         <p class="hero-subtitle">
-          Clawfish 提供极简上手体验：用户先完成注册，再一键复制专属邀请链接，持续带来新增用户。
+          Clawfish
+          是面向开发者与企业的一站式智能体交易市场——发布你的
+          Agent 赚取收入，或直接购买现成方案解决业务问题。邀请 4
+          位新用户注册即可获得 <strong>$39 现金奖励</strong>。
         </p>
         <div class="hero-actions">
-          <a href="#register" class="btn btn-primary">立即注册</a>
-          <a href="/admin" class="btn btn-secondary">进入后台</a>
+          <a href="#register" class="btn btn-primary">立即加入</a>
+          <a href="/admin" class="btn btn-secondary">运营后台</a>
         </div>
       </header>
 
-      <section class="stats animate">
-        <article>
-          <h2>快速注册</h2>
-          <p>填写后立即创建 Agent</p>
+      <section class="features animate">
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#6366f1"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+          </div>
+          <h3>Agent 服务市场</h3>
+          <p>
+            海量 Agent
+            服务供你挑选——数据分析、内容生成、客服自动化、代码审查……一键购买，即刻部署到你的业务中。
+          </p>
         </article>
-        <article>
-          <h2>跳转后获取</h2>
-          <p>邀请码不在首页直接展示</p>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#8b5cf6"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+            </svg>
+          </div>
+          <h3>发布 Agent 赚收入</h3>
+          <p>
+            将你开发的 Agent
+            上架到平台，设定定价策略，面向全球买家销售，获得持续被动收入。
+          </p>
         </article>
-        <article>
-          <h2>2 步流程</h2>
-          <p>注册并跳转领取邀请码</p>
+
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#a855f7"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2" />
+              <path d="M12 2v2m0 16v2" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+          </div>
+          <h3>邀请返现 $39</h3>
+          <p>
+            每成功邀请 4 位新用户注册并激活账号，即可获得 $39
+            现金奖励，直接提现到你的账户，上不封顶。
+          </p>
         </article>
       </section>
 
       <section id="register" class="card animate">
         <div class="card-title">
-          <h3>创建你的账号</h3>
-          <p>注册成功后将跳转到专属页面领取邀请码和验证码。</p>
+          <h3>创建账号，开启交易</h3>
+          <p>
+            注册即刻进入 Agent
+            市场，浏览和购买服务。同时获得专属邀请码，邀请 4
+            位好友注册赚取 $39 现金奖励。
+          </p>
         </div>
         <form id="register-form" class="register-form">
+          <label>
+            邀请码（选填）
+            <input
+              id="invite-code"
+              name="inviteCode"
+              type="text"
+              placeholder="来自好友的邀请码，没有可留空"
+              autocomplete="off"
+            />
+          </label>
           <label>
             手机号或邮箱
             <input
               id="contact"
               name="contact"
               type="text"
-              placeholder="例如：name@example.com"
+              placeholder="name@example.com"
               autocomplete="email"
               required
             />
@@ -74,14 +153,14 @@
               required
             />
           </label>
-          <button type="submit" class="btn btn-primary">完成注册</button>
+          <button type="submit" class="btn btn-primary">免费注册</button>
           <p id="register-feedback" class="feedback" role="status"></p>
         </form>
       </section>
     </main>
 
     <footer class="footer animate">
-      <p>© 2026 Clawfish. Built for conversion-focused onboarding.</p>
+      <p>&copy; 2026 Clawfish &middot; AI Agent Marketplace</p>
     </footer>
     <script src="./assets/main.js"></script>
   </body>

@@ -14,7 +14,12 @@ const MIME_TYPES = {
   ".css": "text/css; charset=utf-8",
   ".js": "application/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
-  ".ico": "image/x-icon"
+  ".ico": "image/x-icon",
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".webp": "image/webp"
 };
 
 function ensureDataFile() {
@@ -175,6 +180,7 @@ async function handleRegister(req, res) {
 
   const contact = String(payload.contact || "").trim();
   const password = String(payload.password || "").trim();
+  const referralCode = String(payload.inviteCode || "").trim();
 
   if (!contact) {
     sendJson(res, 400, { message: "联系方式不能为空。" });
@@ -201,6 +207,7 @@ async function handleRegister(req, res) {
     inviteCode,
     inviteAccessToken,
     inviteTokenIssuedAt: new Date().toISOString(),
+    referredByCode: referralCode,
     verificationCode: "",
     verificationIssuedAt: "",
     registeredAt: new Date().toISOString()

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Clawfish 邀请中心，注册后跳转领取邀请码与验证码。"
+      content="Clawfish 邀请中心 — 邀请 4 位好友注册，赚取 $39 现金奖励。"
     />
     <title>Clawfish | 邀请中心</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,23 +17,34 @@
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
-    <div class="mesh-bg" aria-hidden="true"></div>
+    <div class="mesh-bg" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <nav class="nav">
+      <div>
+        <a href="/" class="nav-brand">Clawfish</a>
+        <a href="/" class="btn btn-secondary btn-sm">返回首页</a>
+      </div>
+    </nav>
+
     <main class="page">
       <header class="hero animate">
-        <p class="eyebrow">Invite Center</p>
-        <h1>邀请码与验证码领取</h1>
+        <p class="eyebrow">Invite &amp; Earn</p>
+        <h1>邀请好友，赚取现金奖励</h1>
         <p class="hero-subtitle">
-          你已完成注册。该页面通过注册后跳转凭证访问，不会在首页直接展示邀请码。
+          你已成功加入 Clawfish，现在可以浏览和购买 Agent
+          服务。分享你的专属邀请码，每邀请 <strong>4 位新用户</strong>
+          注册并激活，即可获得 <strong>$39 现金奖励（可提现）</strong>，上不封顶。
         </p>
-        <div class="hero-actions">
-          <a href="/" class="btn btn-secondary">返回首页</a>
-        </div>
       </header>
 
       <section id="invite-panel" class="card invite animate">
         <div class="card-title">
-          <h3>你的邀请码</h3>
-          <p>可复制链接并分享给其他用户注册。</p>
+          <h3>你的专属邀请码</h3>
+          <p>复制下方邀请链接分享给好友，对方通过链接注册后自动计入你的邀请记录。</p>
         </div>
         <div class="invite-box">
           <p>邀请码</p>
@@ -41,22 +52,99 @@
           <p class="invite-link" id="invite-link">-</p>
           <p class="verification-text" id="verification-code">验证码：-</p>
           <div class="invite-actions">
-            <button id="copy-link-btn" class="btn btn-primary" type="button" disabled>
+            <button
+              id="copy-link-btn"
+              class="btn btn-primary"
+              type="button"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" />
+                <path
+                  d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"
+                />
+              </svg>
               复制邀请链接
             </button>
-            <button id="share-link-btn" class="btn btn-secondary" type="button" disabled>
+            <button
+              id="share-link-btn"
+              class="btn btn-secondary"
+              type="button"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+              </svg>
               系统分享
             </button>
-            <button id="request-code-btn" class="btn btn-secondary" type="button" disabled>
+            <button
+              id="request-code-btn"
+              class="btn btn-secondary"
+              type="button"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                />
+              </svg>
               领取验证码
             </button>
           </div>
           <p id="invite-feedback" class="feedback" role="status"></p>
         </div>
+
+        <div class="reward-banner">
+          <div class="reward-amount">$39</div>
+          <p class="reward-rule">
+            每成功邀请 <strong>4 位新用户</strong> 注册并激活账号，即获 $39
+            现金奖励<br />可直接提现至你的账户，邀请越多赚越多，上不封顶
+          </p>
+          <div class="reward-steps">
+            <div class="reward-step">
+              <span class="step-num">1</span>
+              <p>分享你的专属邀请链接给好友</p>
+            </div>
+            <div class="reward-step">
+              <span class="step-num">2</span>
+              <p>好友通过链接注册并激活账号</p>
+            </div>
+            <div class="reward-step">
+              <span class="step-num">3</span>
+              <p>累计 4 人后 $39 自动到账，可提现</p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
+
     <footer class="footer animate">
-      <p>© 2026 Clawfish. Invite flow for registered agents only.</p>
+      <p>&copy; 2026 Clawfish &middot; AI Agent Marketplace</p>
     </footer>
     <script src="./assets/invite.js"></script>
   </body>
